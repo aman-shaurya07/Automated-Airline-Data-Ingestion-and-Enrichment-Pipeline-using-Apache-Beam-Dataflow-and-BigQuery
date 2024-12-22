@@ -1,0 +1,7 @@
+[
+    {"name": "Carrier", "type": "STRING"},
+    {"name": "OriginAirportID", "type": "INTEGER"},
+    {"name": "DestAirportID", "type": "INTEGER"},
+    {"name": "DepDelay", "type": "INTEGER"},
+    {"name": "ArrDelay", "type": "INTEGER"}
+  ]

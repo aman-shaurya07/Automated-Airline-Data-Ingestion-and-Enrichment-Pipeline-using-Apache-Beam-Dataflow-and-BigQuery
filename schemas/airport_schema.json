@@ -1,0 +1,6 @@
+[
+    {"name": "airport_id", "type": "INTEGER"},
+    {"name": "city", "type": "STRING"},
+    {"name": "state", "type": "STRING"},
+    {"name": "name", "type": "STRING"}
+  ]

@@ -1,0 +1,21 @@
+main:
+  steps:
+  - init:
+      call: google.bigquery.datasets.create
+      args:
+        datasetId: "airline_data"
+  - etl:
+      call: google.cloud.dataflow.jobs.run
+      args:
+        jobName: "airline-etl-job"
+        parameters:
+          runner: "DataflowRunner"
+          pythonFile: "gs://airline-data-ingestion/scripts/dataflow_etl.py"
+        environment:
+          tempLocation: "gs://airline-data-ingestion/temp/"
+          stagingLocation: "gs://airline-data-ingestion/staging/"
+  - notify:
+      call: google.pubsub.topics.publish
+      args:
+        topic: "projects/<PROJECT_ID>/topics/gcs-file-uploads"
+        message: "ETL Job Completed Successfully"
